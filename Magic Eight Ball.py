@@ -8,7 +8,8 @@ yes = ["As I see it, YES",
        "Bet your life",
        "Without a Doubt",
        "Definitely",
-       "Certainly So"
+       "Certainly So",
+       "I will say YES"
         ]
 no = ["My reply is no",
        "Dont Count on it",
@@ -21,6 +22,7 @@ no = ["My reply is no",
        "I won't bet on it",
        "I wouldn't do it",
        "I Doubt it"
+       "Negative"
         ]
 
 tryagain = ["Ask Again Later",
@@ -32,7 +34,8 @@ tryagain = ["Ask Again Later",
        "It is unclear",
        "What does your heart tell you?",
        "I really don't know",
-            "Give it it another shot",
+        "Give it it another shot",
+        "not sure"
         ]
 
 import random
@@ -82,7 +85,7 @@ def main():
             print("")
             print("Thanks for participating")
             pass
-        else
+        else:
             selectagain()
 
 main()
