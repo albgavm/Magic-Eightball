@@ -9,7 +9,7 @@ yes = ["As I see it, YES",
        "Without a Doubt",
        "Definitely",
        "Certainly So",
-       "I will say YES"
+       "I will say Yes"
         ]
 no = ["My reply is no",
        "Dont Count on it",
