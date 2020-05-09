@@ -10,36 +10,37 @@ yes = ["As I see it, YES",
        "Definitely",
        "Certainly So",
        "I will Say Yes"
-        ]
+       ]
 no = ["My reply is no",
-       "Dont Count on it",
-       "No",
-       "Very Doubtful",
-       "My Senses say No",
-       "I have a bad feeling about this",
-       "I dont feel confident",
-       "Outlook Not so Good",
-       "I won't bet on it",
-       "I wouldn't do it",
-       "I Doubt it"
-       "Negative"
-        ]
+      "Dont Count on it",
+      "No",
+      "Very Doubtful",
+      "My Senses say No",
+      "I have a bad feeling about this",
+      "I dont feel confident",
+      "Outlook Not so Good",
+      "I won't bet on it",
+      "I wouldn't do it",
+      "I Doubt it"
+      "Negative"
+      ]
 
 tryagain = ["Ask Again Later",
-       "Better not tell you now",
-       "Concentrate and Ask me again",
-       "Cannot predict now",
-       "I'm not sure",
-       "Give me a minute to decide",
-       "It is unclear",
-       "What does your heart tell you?",
-       "I really don't know",
-        "Give it it another shot",
-        "not sure"
-        ]
+            "Better not tell you now",
+            "Concentrate and Ask me again",
+            "Cannot predict now",
+            "I'm not sure",
+            "Give me a minute to decide",
+            "It is unclear",
+            "What does your heart tell you?",
+            "I really don't know",
+            "Give it it another shot",
+            "not sure"
+            ]
 
 import random
 import mysql.connector
+
 mydb = mysql.connector.connect(host="127.0.0.1", user="root", password="H0vhoy2zc4pz")
 
 
@@ -89,5 +90,6 @@ def main():
             pass
         else:
             selectagain()
+
 
 main()
