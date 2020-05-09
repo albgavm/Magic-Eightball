@@ -39,6 +39,8 @@ tryagain = ["Ask Again Later",
         ]
 
 import random
+import mysql.connector
+mydb = mysql.connector.connect(host="127.0.0.1", user="root", password="H0vhoy2zc4pz")
 
 
 def mergelist(a, b, c):
