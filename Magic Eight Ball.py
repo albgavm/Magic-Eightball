@@ -37,11 +37,10 @@ tryagain = ["Ask Again Later",
             "Give it it another shot",
             "not sure"
             ]
-
-import random
 import mysql.connector
+import random
 
-mydb = mysql.connector.connect(host="127.0.0.1", user="root", password="H0vhoy2zc4pz")
+mydb = mysql.connector.connect(host="127.0.0.1", user="root", passwd="H0vhoy2zc4pz", database="127.0.0.1")
 
 
 def mergelist(a, b, c):
@@ -56,7 +55,6 @@ def selectrandom(listname):
 
 def showdraw(x):
     print(x)
-
 
 def selectagain():
     ans3 = input("Would you like to shake again (Y/N)?:")
@@ -90,6 +88,5 @@ def main():
             pass
         else:
             selectagain()
-
 
 main()
