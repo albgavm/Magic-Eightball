@@ -25,7 +25,6 @@ for i in mycursor:
 table = ["1","2","3"]
 x = random.choice(table)
 
-print(x)
 
 if x == "1":
     mycursor.execute("SELECT test FROM Confirm ORDER BY RAND() LIMIT 1")
@@ -34,5 +33,9 @@ elif x == "2":
 elif x == "3":
     mycursor.execute("SELECT test FROM Notsure ORDER BY RAND() LIMIT 1")
 
-print(mycursor)
+rows = mycursor.fetchall()    # get all selected rows, as Barmar mentioned
+for r in rows:
+    print(r)
+
+
 
