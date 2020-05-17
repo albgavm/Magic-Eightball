@@ -1,3 +1,4 @@
+import inquirer
 import mysql.connector
 import random
 
@@ -67,14 +68,25 @@ def addline():
             selectagain()
 
 
+
+
+
 # def main() need to change first draw from the database
+#make whole table of selection
+
 def main():
     print("WELCOME TO MAGIC EIGHT BALL")
     print("")
-    ans = input("Would you like to shake (Y/N)?:")
+    questions = [
+        inquirer.List('size',
+                      message="Main Menu",
+                      choices=['Shake', 'Edit', 'Exit'],
+                      ),
+    ]
+    ans = inquirer.prompt(questions)
 
     # main draw function
-    if ans in ['y', 'Y', 'yes', 'Yes', 'YES']:
+    if ans in ['y', 'Y', 'yes', 'Yes', 'YES']: #edit ans
         print("")
         showdraw(selectrandom())
         print("")
@@ -89,6 +101,7 @@ def main():
             pass
         else:
             selectagain()
+'''
 
 main()
 
