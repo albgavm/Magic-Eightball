@@ -2,6 +2,7 @@
 
 
 import mysql.connector
+import inquirer
 
 import random
 
@@ -19,7 +20,6 @@ for i in mycursor:
 variable = mycursor.execute ("SELECT test FROM Confirm ORDER BY RAND() LIMIT 1")
 for i in mycursor:
     print(i)
-'''
 
 
 table = ["1","2","3"]
@@ -36,6 +36,16 @@ elif x == "3":
 rows = mycursor.fetchall()    # get all selected rows, as Barmar mentioned
 for r in rows:
     print(r)
+'''
 
+
+addquestion = input("would you like to add a text selection panel?")
+
+questions = [
+    inquirer.List('size',
+                  message="would you like to add a text selection panel?",
+                  choices=['Shake', 'Edit', 'Exit'],
+                  ),
+]
 
 

@@ -5,10 +5,8 @@ import random
 mydb = mysql.connector.connect(host="127.0.0.1", user="root", passwd="H0vhoy2zc4pz", database="eightballtest")
 
 
-
-# select random column #MUST FIX does not work
 def selectrandom():
-    # just SELECT RANDOM TABLE AND SELECT RANDOM CHOICE
+    #select random table from SQL then select random row
     tablelist = (1, 2, 3)
     randchoice = random.choice(tablelist)
     mycursor = mydb.cursor()
@@ -25,13 +23,11 @@ def selectrandom():
         return (text)
 
 
-# showdraw
 def showdraw(show):
     print(show)
 
-
-# ask to selectagain
 def selectagain():
+    #ask to selectagain
     ans3 = input("Would you like to shake again (Y/N)?:")
     if ans3 in ['y', 'Y', 'yes', 'Yes', 'YES']:
         print("")
@@ -44,7 +40,16 @@ def selectagain():
 
 # adds a line in a yes,no or tryagain table
 def addline():
-    addquestion = input("would you like to add a text selection panel?")
+
+    questions = [
+        inquirer.List('size',
+                      message="would you like to add a text selection panel?",
+                      choices=['Yes Text', 'No Text', 'Try Again Text'],
+                      ),
+    ]
+    addquestion = inquirer.prompt(questions)
+
+
     if addquestion in ['y', 'Y', 'yes', 'Yes', 'YES']:
         ans = input("where would you like to add a text? (Yes, No or Tryagain tables?)")
         mycursor = mydb.cursor()
