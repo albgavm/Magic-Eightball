@@ -99,12 +99,12 @@ def main():
     print("choose to shake, or edit current messages")
     print("")
 
-    start = input("press enter to continue")
+    start = input("press space key, then enter to continue")
 
-    if start == "":
+    if start == " ":
 
         questions = [
-            inquirer.List('mainmenu',
+            inquirer.List('size',
                           message="Main Menu",
                           choices=['Shake', 'Edit', 'Exit'],
                           carousel=True,
@@ -113,9 +113,8 @@ def main():
         ans = inquirer.prompt(questions)
 
         # main draw function
-
-        if ans["mainmenu"] =='Shake': #edit ans
-            print("")
+        if ans =='Shake': #edit ans
+            print("hey")
             showdraw(selectrandom())
             print("")
             selectagain()
