@@ -73,13 +73,13 @@ def main():
     print("WELCOME TO MAGIC EIGHT BALL")
     print("")
 
-    questions = [
+    qs = [
         inquirer.List('size',
                       message="Main Menu",
                       choices=['Shake', 'Edit', 'Exit'],
                       ),
     ]
-    ans = inquirer.prompt(questions)
+    ans = inquirer.prompt(qs)
 
     # main draw function
     if ans in ['y', 'Y', 'yes', 'Yes', 'YES']: #edit ans

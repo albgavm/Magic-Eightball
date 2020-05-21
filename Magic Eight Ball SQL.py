@@ -37,6 +37,18 @@ def selectagain():
     else:
         main()
 
+def editselection():
+    #edits the messages
+    pass
+
+def deleteselection():
+    #deletes the messages
+    pass
+
+def viewselection():
+    #views the messages
+    pass
+
 
 # adds a line in a yes,no or tryagain table
 def addline():
@@ -56,7 +68,7 @@ def addline():
 
         if ans in ['y', 'Y', 'yes', 'Yes', 'YES']:
             yesinput = input("Enter text do you want to add as Yes table")
-            mycursor.execute("INSERT INTO Confirn VALUES (?)", (yesinput))  # need to check if it populates the table
+            mycursor.execute("INSERT INTO Confirm VALUES (?)", (yesinput))  # need to check if it populates the table
             print("yes statement successfully added")
 
         elif ans in ['n', 'N', 'no', 'No', 'NO']:
@@ -80,32 +92,40 @@ def addline():
 #make whole table of selection
 
 def main():
-    print("WELCOME TO MAGIC EIGHT BALL")
+
     print("")
-    questions = [
-        inquirer.List('size',
-                      message="Main Menu",
-                      choices=['Shake', 'Edit', 'Exit'],
-                      ),
-    ]
-    ans = inquirer.prompt(questions)
+    print("WELCOME TO MAGIC EIGHT BALL")
+    print("choose to shake, or edit current messages")
+    print("")
 
-    # main draw function
-    if ans in ['y', 'Y', 'yes', 'Yes', 'YES']: #edit ans
-        print("")
-        showdraw(selectrandom())
-        print("")
-        selectagain()
+    start = input("press space key, then enter to continue")
 
-    # need to edit and add edit database
-    else:
-        ans2 = input("Are you satisfied with your answer (Y/N)?:")
-        if ans2 in ['y', 'Y', 'yes', 'Yes', 'YES']:
+    if start == " ":
+
+        questions = [
+            inquirer.List('size',
+                          message="Main Menu",
+                          choices=['Shake', 'Edit', 'Exit'],
+                          ),
+        ]
+        ans = inquirer.prompt(questions)
+
+        # main draw function
+        if ans =='Shake': #edit ans
             print("")
-            print("Thanks for participating")
-            pass
-        else:
+            showdraw(selectrandom())
+            print("")
             selectagain()
+
+        # need to edit and add edit database
+        else:
+            ans2 = input("Are you satisfied with your answer (Y/N)?:")
+            if ans2 in ['y', 'Y', 'yes', 'Yes', 'YES']:
+                print("")
+                print("Thanks for participating")
+                pass
+            else:
+                selectagain()
 
 main()
 
