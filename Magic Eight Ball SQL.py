@@ -1,7 +1,6 @@
 import inquirer
 import mysql.connector
 import random
-import curses
 
 mydb = mysql.connector.connect(host="127.0.0.1", user="root", passwd="H0vhoy2zc4pz", database="eightballtest")
 
@@ -52,7 +51,7 @@ def viewselection():
 
 
 # adds a line in a yes,no or tryagain table
-def addline():
+def addselection():
 
     questions = [
         inquirer.List('size',
@@ -88,7 +87,6 @@ def addline():
 
 
 
-
 # def main() need to change first draw from the database
 #make whole table of selection
 
@@ -112,23 +110,49 @@ def main():
         ]
         ans = inquirer.prompt(questions)
 
-        # main draw function
-
-        if ans["mainmenu"] =='Shake': #edit ans
+        # main shake function
+        if ans["mainmenu"] =='Shake':
             print("")
             showdraw(selectrandom())
             print("")
             selectagain()
 
-        # need to edit and add edit database
+        #edit menu
+        if ans["mainmenu"] =='Edit':
+            editquestions = [
+                inquirer.List('edit',
+                              message="Choose Edit Options",
+                              choices=['Show', 'Add', 'Delete', 'Edit selection', 'Back to Main'],
+                              carousel=True,
+                              ),
+            ]
+            ansedit = inquirer.prompt(editquestions)
+
+            if ansedit["edit"] =='Show':
+                viewselection()
+
+            elif ansedit["edit"] == 'Add':
+                addselection()
+
+            elif ansedit["edit"] == 'Delete':
+                deleteselection()
+
+            elif ansedit["edit"] == 'Edit Selection':
+                editselection()
+
+            elif ansedit["edit"] == 'Back to Main':
+                main()
+
+
         else:
-            ans2 = input("Are you satisfied with your answer (Y/N)?:")
+            #must edit to inquirer
+            ans2 = input("Are you sure you want to exit (Y/N)?:")
             if ans2 in ['y', 'Y', 'yes', 'Yes', 'YES']:
                 print("")
                 print("Thanks for participating")
                 pass
             else:
-                selectagain()
+                main()
 
 main()
 
