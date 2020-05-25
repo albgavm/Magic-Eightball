@@ -85,11 +85,6 @@ def addselection():
             selectagain()
 
 
-
-
-# def main() need to change first draw from the database
-#make whole table of selection
-
 def main():
 
     print("")
@@ -118,7 +113,7 @@ def main():
             selectagain()
 
         #edit menu
-        if ans["mainmenu"] =='Edit':
+        elif ans["mainmenu"] =='Edit':
             editquestions = [
                 inquirer.List('edit',
                               message="Choose Edit Options",
@@ -144,15 +139,22 @@ def main():
                 main()
 
 
-        else:
-            #must edit to inquirer
-            ans2 = input("Are you sure you want to exit (Y/N)?:")
-            if ans2 in ['y', 'Y', 'yes', 'Yes', 'YES']:
+        elif ans["mainmenu"] =='Exit'
+            exit_questions = [
+                inquirer.List('exit_ans',
+                              message="Are you sure you want to exit?",
+                              choices=['Yes', 'No'],
+                              carousel=True,
+                              ),
+            ]
+            exit_ans = inquirer.prompt(exit_questions)
+
+            if exit_ans["exit_ans"] == "Yes":
                 print("")
                 print("Thanks for participating")
                 pass
+
             else:
                 main()
-
 main()
 
