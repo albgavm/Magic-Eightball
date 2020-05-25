@@ -3,13 +3,12 @@ import mysql.connector
 import random
 
 mydb = mysql.connector.connect(host="127.0.0.1", user="root", passwd="H0vhoy2zc4pz", database="eightballtest")
-
+mycursor = mydb.cursor()
 
 def selectrandom():
     #select random table from SQL then select random row
     tablelist = (1, 2, 3)
     randchoice = random.choice(tablelist)
-    mycursor = mydb.cursor()
     if randchoice == 1:
         mycursor.execute("SELECT test FROM Confirm ORDER BY RAND() LIMIT 1")
     elif randchoice == 2:
@@ -24,7 +23,7 @@ def selectrandom():
 
 
 def showdraw(show):
-    print(show)
+
 
 def selectagain():
     #ask to selectagain
@@ -46,8 +45,34 @@ def deleteselection():
     pass
 
 def viewselection():
-    #views the messages
-    pass
+    # beta
+
+    view_questions = [
+        inquirer.List('view_answer',
+                      message="What would you like to view?",
+                      choices=['Confirm List', 'Disapprove List', 'Not Sure List','Back to Main Menu'],
+                      ),
+    ]
+    view_inq = inquirer.prompt(view_questions)
+
+    if view_inq["view_answer"] == 'Confirm List':
+        mycursor.execute("SELECT test FROM Confirm")  # check if SELECT Works
+
+    elif view_inq["view_answer"] == 'Disapprove List':
+        mycursor.execute("SELECT test FROM Disprove")  # check if SELECT Works
+
+    elif view_inq["view_answer"] == 'Not Sure List':
+        mycursor.execute("SELECT test FROM Notsure")  # check if SELECT Works
+
+    else:
+        main()
+
+    showed_table = mycursor.fetchall()
+
+    for i in showed_table:  # check Showed Table Works
+        print(i)
+
+
 
 
 # adds a line in a yes,no or tryagain table
